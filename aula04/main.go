@@ -23,21 +23,35 @@ type user struct {
 
 // Address estrutura de endereço
 type Address struct {
-	Name string
-	Num  int
+	Name string `json:"name"`
+	Num  int    `json:"num"`
 }
 
 // Nickname apelidos
 type Nickname struct {
-	Name string
+	Name string `json:"name"`
 }
 
 var (
 	user1 User
 	user2 user
+
+	myCache map[string]string
 )
 
 func main() {
+
+	myCache = make(map[string]string, 3)
+
+	myCache["a"] = "Teste 1"
+	myCache["b"] = "Teste 2"
+	myCache["c"] = "Teste 3"
+
+	fmt.Print(myCache["b"])
+	delete(myCache, "b")
+
+	fmt.Printf("%+v", myCache)
+
 	user1.Name = "Jeff"
 	user1.Age = 23
 
@@ -51,12 +65,15 @@ func main() {
 	resutado, err := json.Marshal(user1)
 	if err != nil {
 		fmt.Printf("Error ao parsear json. ERROR: %s", err.Error())
-		return
+		panic(err)
 	}
 
 	fmt.Print(string(resutado))
 
 	user2.name = "Jeff"
 	user2.age = 23
+
+	user3 := User{Name: "jeff", Age: 23, Apelidos: []Nickname{Nickname{"Name"}}}
+	fmt.Print(user3)
 
 }
