@@ -16,7 +16,7 @@ No exemplo acima estamos falando para o aquivo que o ele é o main e chamamos do
 
 ### Funções ###
 
-- Para definir uma função usamos a palavra reservada "func" seguida do nome da função e seu retorno o go pode retornar mais de um valor
+- Para definir uma função usamos a palavra reservada "func" seguida do nome da função, argumentos e seu retorno o go pode retornar mais de um valor
 
 ```
   func soma(a,b int) int {
@@ -53,7 +53,7 @@ func myFuncionVar() (int,string) {
 
 ### Nomeando retorna da função ###
 
-- para facilitar nosso trabalho de de ficar declarando variǘeis para passar no retorno o go facilita
+- para facilitar nosso trabalho de de ficar declarando variáveis para passar no retorno o go facilita
 
 ```
 func MyFunctionNew() (nome string, idade int) {
@@ -80,3 +80,40 @@ chamaFuncao()
 ```
 
 Aciama falamos que essa variável tem o papel de guargar essa função e uma vez chamada ela a função é acionada.
+
+## argumentos de função ##
+
+- podemos passar os tipo primitivos, passar funções e estruturas de dados e ponteiros de dados.
+
+```
+  func soma(a,b int) int {
+    return a + b
+  }
+
+  result := soma(1,2)
+
+```
+
+- podemos passar os ponteiros
+
+```
+  func soma(res *int, a,b int) {
+    res = a + b
+  }
+
+  var result int
+  soma(&result, 4,2)
+
+  // Print de result
+
+  var idade = 3
+  fmt.Printf("minha idade: %d \r\n", idade)
+  somai := somaIdade(&idade)
+  fmt.Printf("minha idade++: %d \r\n", somai)
+  fmt.Printf("minha idade: %d \r\n", idade)
+
+  func somaIdade(idade *int) int {
+    return idade++
+  }
+
+```

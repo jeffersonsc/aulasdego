@@ -32,6 +32,15 @@ func main() {
 	myFib := fibonacci.Fibonacci(6)
 	fmt.Printf("Resultado do fibonacci: %d \r\n", myFib)
 
+	var idade = 3
+	fmt.Printf("minha idade: %d - %+v \r\n", idade, &idade)
+	somaIdade(&idade)
+
+	fmt.Printf("minha idade: %d - %+v \r\n", idade, &idade)
+}
+
+func somaIdade(idade *int) {
+	*idade++
 }
 
 func soma(a, b int) int {
